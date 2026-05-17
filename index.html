@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,669 +6,865 @@
     <title>For My dear friend</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
             font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, #ffd1dc, #ffb7c5);
+            background: linear-gradient(160deg, #1a0010 0%, #3d0025 40%, #6b0040 70%, #8b0050 100%);
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow-x: hidden;
-            color: #8a1c4a;
+            display: flex; flex-direction: column; align-items: center;
+            overflow-x: hidden; color: #fff;
         }
-        
-        /* Password Modal */
+
         .password-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 182, 193, 0.95);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 100;
-            transition: opacity 0.5s ease;
+            position: fixed; top:0; left:0; width:100%; height:100%;
+            background: rgba(20,0,12,0.97);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            z-index: 100; transition: opacity 0.5s ease;
         }
-        
         .password-content {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            max-width: 400px;
-            width: 90%;
-            animation: bounceIn 1s forwards;
+            background: linear-gradient(145deg,#2d0018,#1a000e);
+            border: 1px solid rgba(255,100,160,0.3);
+            padding: 38px 32px; border-radius: 24px;
+            text-align: center; max-width: 380px; width: 90%;
+            animation: bounceIn 0.8s forwards;
+            box-shadow: 0 0 60px rgba(255,80,140,0.2);
         }
-        
-        .password-content h2 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 32px;
-            margin-bottom: 20px;
-            color: #d81b60;
-        }
-        
+        .password-content h2 { font-family:'Dancing Script',cursive; font-size:30px; margin-bottom:6px; color:#ff80b0; }
+        .password-content p  { font-size:13px; color:rgba(255,180,210,0.5); margin-bottom:22px; }
         .password-input {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #ffb7c5;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            font-size: 16px;
-            text-align: center;
-            outline: none;
-            transition: border-color 0.3s;
+            width:100%; padding:13px 16px;
+            background:rgba(255,255,255,0.06);
+            border:1px solid rgba(255,100,160,0.4);
+            border-radius:12px; margin-bottom:14px; font-size:16px;
+            text-align:center; outline:none; color:#fff; transition:border-color 0.3s;
         }
-        
-        .password-input:focus {
-            border-color: #d81b60;
-        }
-        
+        .password-input::placeholder { color:rgba(255,180,210,0.35); }
+        .password-input:focus { border-color:#ff4090; }
         .submit-btn {
-            background: #d81b60;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background 0.3s, transform 0.2s;
+            background:linear-gradient(135deg,#d81b60,#880e4f);
+            color:white; border:none; padding:13px 30px;
+            border-radius:12px; cursor:pointer; font-size:15px; font-weight:600;
+            letter-spacing:0.5px; transition:transform 0.2s, box-shadow 0.2s;
+            box-shadow:0 4px 20px rgba(216,27,96,0.5);
         }
-        
-        .submit-btn:hover {
-            background: #b71550;
-            transform: scale(1.05);
-        }
-        
-        /* Welcome Screen */
+        .submit-btn:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(216,27,96,0.65); }
+        .error-msg { color:#ff6b9d; font-size:13px; margin-top:10px; min-height:18px; }
+
         .welcome-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #ffd1dc, #ffb7c5);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 99;
-            transition: opacity 0.8s ease;
+            position:fixed; top:0; left:0; width:100%; height:100%;
+            background:linear-gradient(160deg,#1a0010,#6b0040);
+            display:flex; flex-direction:column; justify-content:center; align-items:center;
+            z-index:99; transition:opacity 0.8s ease;
         }
-        
         .welcome-message {
-            font-family: 'Dancing Script', cursive;
-            font-size: 48px;
-            color: #d81b60;
-            text-align: center;
-            animation: pulse 2s infinite, float 3s ease-in-out infinite;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            font-family:'Dancing Script',cursive; font-size:42px;
+            color:#ffb3d1; text-align:center; padding:0 30px;
+            animation:pulse 2s infinite;
+            text-shadow:0 0 40px rgba(255,100,160,0.6);
         }
-        
-        /* Main Content */
-        .container {
-            width: 100%;
-            max-width: 900px;
-            padding: 20px;
-            margin-top: 50px;
+        .welcome-sub { font-size:13px; color:rgba(255,180,210,0.45); margin-top:12px; letter-spacing:2px; text-transform:uppercase; }
+
+        /* ── CAKE SCREEN ── */
+        .cake-screen {
+            width:100%; display:flex; flex-direction:column;
+            align-items:center; padding:36px 20px 24px;
+            min-height:100vh; justify-content:center;
         }
-        
+        .bday-text {
+            font-family:'Dancing Script',cursive; font-size:36px;
+            color:#ffb3d1; text-align:center; margin-bottom:12px;
+            text-shadow:0 0 30px rgba(255,100,160,0.6);
+            animation:fadeSlideDown 1s 0.3s both; letter-spacing:1px;
+        }
+
+        .cake-wrap {
+            position:relative; cursor:pointer;
+            animation:cakeRise 1.2s cubic-bezier(0.34,1.56,0.64,1) 0.5s both;
+        }
+        .cake-wrap:hover .candle-flame { filter:brightness(1.3); }
+
+        /* glow behind cake */
+        .cake-glow-ring {
+            position:absolute; bottom:-20px; left:50%;
+            transform:translateX(-50%);
+            width:320px; height:60px;
+            background:radial-gradient(ellipse, rgba(255,140,60,0.25) 0%, transparent 70%);
+            pointer-events:none; border-radius:50%;
+        }
+
+        .tap-label {
+            margin-top:22px; font-size:12px; letter-spacing:2px;
+            color:rgba(255,180,210,0.5); text-transform:uppercase;
+            animation:fadeSlideDown 1s 1.6s both;
+            display:flex; align-items:center; gap:8px;
+        }
+        .tap-label::before,.tap-label::after { content:'🕯️'; }
+
+        /* pulse ring on candles hint */
+        @keyframes pulseRing {
+            0%  { transform:scale(1); opacity:0.7; }
+            100%{ transform:scale(1.6); opacity:0; }
+        }
+        .pulse-ring {
+            position:absolute; border-radius:50%;
+            width:18px; height:18px;
+            background:rgba(255,180,50,0.5);
+            animation:pulseRing 1.2s ease-out infinite;
+            pointer-events:none;
+        }
+
+        /* confetti */
+        .confetti-piece {
+            position:fixed; pointer-events:none; z-index:999;
+            border-radius:3px;
+            animation:confettiBurst 1.2s ease-out forwards;
+        }
+
+        /* ── MAIN CONTENT ── */
+        .main-content {
+            width:100%; max-width:860px;
+            padding:20px; display:none;
+            animation:fadeUp 0.6s ease forwards;
+        }
         .tabs {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
+            display:flex; justify-content:center; gap:10px;
+            margin-bottom:22px; flex-wrap:wrap;
         }
-        
         .tab {
-            background: rgba(255, 255, 255, 0.7);
-            border: none;
-            padding: 12px 20px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            color: #d81b60;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            background:rgba(255,255,255,0.08);
+            border:1px solid rgba(255,100,160,0.25);
+            padding:11px 20px; border-radius:50px; cursor:pointer;
+            font-size:14px; font-weight:600; color:rgba(255,180,210,0.8);
+            transition:all 0.25s ease; display:flex; align-items:center; gap:7px;
         }
-        
-        .tab:hover {
-            background: rgba(255, 255, 255, 0.9);
-            transform: translateY(-3px);
-        }
-        
+        .tab:hover { background:rgba(255,100,160,0.15); transform:translateY(-2px); }
         .tab.active {
-            background: white;
-            color: #d81b60;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            background:linear-gradient(135deg,#d81b60,#880e4f);
+            color:white; border-color:transparent;
+            box-shadow:0 4px 18px rgba(216,27,96,0.5);
         }
-        
         .content-area {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            min-height: 400px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
+            background:rgba(255,255,255,0.05);
+            backdrop-filter:blur(10px);
+            border:1px solid rgba(255,100,160,0.15);
+            border-radius:22px; padding:30px; min-height:380px;
         }
-        
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.5s ease forwards;
-        }
-        
-        .tab-content.active {
-            display: block;
-        }
-        
-        /*  Letter Tab */
+        .content-area h2 { font-family:'Dancing Script',cursive; font-size:30px; color:#ffb3d1; margin-bottom:22px; }
+        .tab-content { display:none; animation:fadeUp 0.4s ease forwards; }
+        .tab-content.active { display:block; }
+
         .letter {
-            padding: 20px;
-            background: #fff5f7;
-            border-radius: 15px;
-            border: 2px dashed #ffb7c5;
-            margin-bottom: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            padding:22px; background:rgba(255,255,255,0.04);
+            border-radius:16px; border:1px dashed rgba(255,100,160,0.3);
+            cursor:pointer; transition:background 0.3s;
         }
-        
-        .letter-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        
-        .letter h3 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 28px;
-            color: #d81b60;
-        }
-        
+        .letter:hover { background:rgba(255,100,160,0.07); }
+        .letter-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; }
+        .letter h3 { font-family:'Dancing Script',cursive; font-size:26px; color:#ff80b0; }
+        .letter-hint { font-size:13px; color:rgba(255,180,210,0.45); }
         .letter-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease;
+            max-height:0; overflow:hidden; transition:max-height 0.6s ease;
+            font-family:'Dancing Script',cursive; font-size:19px;
+            line-height:1.85; color:rgba(255,200,220,0.88);
+            word-spacing:3px; letter-spacing:0.4px;
         }
-        
-        .letter.expanded .letter-content {
-            max-height:none;
-        }
+        .letter-content p { margin-bottom:12px; }
+        .letter.expanded .letter-content { max-height:9999px; }
 
-        
-        /* Music Tab */
         .song {
-            background: #f8e8ee;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
+            background:rgba(255,255,255,0.04); border:1px solid rgba(255,100,160,0.14);
+            padding:16px; border-radius:14px; margin-bottom:14px;
+            display:flex; align-items:flex-start; gap:14px;
         }
-        
-        .song-icon {
-            font-size: 24px;
-            color: #d81b60;
-        }
-        
-        .song-info h4 {
-            font-size: 18px;
-            margin-bottom: 5px;
-        }
-        
-        .song-info p {
-            color: #888;
-            font-size: 14px;
-        }
-        
-        /* Notes Tab */
+        .song-icon { font-size:26px; margin-top:2px; }
+        .song-info h4 { font-size:17px; margin-bottom:4px; color:#ffb3d1; }
+        .song-info p  { color:rgba(255,180,210,0.45); font-size:13px; margin-bottom:10px; }
+
         .note {
-            background: #fce4ec;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            border-left: 4px solid #d81b60;
+            background:rgba(255,255,255,0.04); padding:15px 18px;
+            border-radius:12px; margin-bottom:13px;
+            border-left:3px solid #d81b60;
+            font-size:15px; color:rgba(255,200,220,0.82); line-height:1.65;
         }
-        
-        /* Gallery Tab */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            gap: 15px;
-        }
-        
+
+        .gallery { display:grid; grid-template-columns:repeat(auto-fill,minmax(110px,1fr)); gap:12px; }
         .gallery-item {
-            border-radius: 10px;
-            overflow: hidden;
-            height: 200px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            border-radius:12px; overflow:hidden; height:130px;
+            border:1px solid rgba(255,100,160,0.18);
+            cursor:pointer; transition:transform 0.3s, box-shadow 0.3s;
         }
-        
-        .gallery-item:hover {
-            transform: scale(1.05);
-        }
-        
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        /* Decorative Elements */
-        .heart, .teddy-bear {
-            position: absolute;
-            z-index: -1;
-            opacity: 0.2;
-            pointer-events: none;
-        }
-        
-        .heart {
-            color: #d81b60;
-            font-size: 24px;
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        .teddy-bear {
-            font-size: 32px;
-            animation: float 8s ease-in-out infinite;
-        }
-        
-        /* Animations */
-        @keyframes bounceIn {
-            0% { transform: scale(0.8); opacity: 0; }
-            60% { transform: scale(1.05); }
-            100% { transform: scale(1); opacity: 1; }
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .welcome-message {
-                font-size: 36px;
-            }
-            
-            .tabs {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .tab {
-                width: 100%;
-                justify-content: center;
-            }
-            
-            .gallery {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-/* Fullscreen Image Viewer */
-.image-viewer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 200;
-}
+        .gallery-item:hover { transform:scale(1.06); box-shadow:0 6px 22px rgba(216,27,96,0.4); }
+        .gallery-item img { width:100%; height:100%; object-fit:cover; }
 
-.image-viewer img {
-    max-width: 95%;
-    max-height: 95%;
-    border-radius: 10px;
-}
+        .image-viewer {
+            position:fixed; top:0; left:0; width:100%; height:100%;
+            background:rgba(0,0,0,0.93); display:none;
+            justify-content:center; align-items:center; z-index:200;
+        }
+        .image-viewer img { max-width:95%; max-height:95%; border-radius:12px; }
+        #closeViewer { position:absolute; top:18px; right:26px; font-size:34px; color:white; cursor:pointer; opacity:0.8; }
 
-#closeViewer {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    font-size: 35px;
-    color: white;
-    cursor: pointer;
-}
-.letter-content {
-    font-family: 'Dancing Script', cursive;
-    font-size: 20px;
-    line-height: 1.8;
-    color: #6a1b3f;
-}
+        .floating-heart {
+            position:fixed; pointer-events:none; z-index:-1;
+            opacity:0; animation:floatHeart linear infinite;
+        }
 
-.letter-content p {
-    margin-bottom: 12px;
-}
-.letter {
-    background: #fff0f5;
-    font-family: 'Dancing Script', cursive;
-}
-.letter-content {
-    word-spacing: 4px;
-    letter-spacing: 0.5px;  /* space between letters */
-    line-height: 1.9;
-}
+        /* Flame anims */
+        @keyframes flicker {
+            0%,100%{ transform:scaleY(1)   scaleX(1)    translateY(0); }
+            25%    { transform:scaleY(1.18) scaleX(0.86) translateY(-1.5px); }
+            50%    { transform:scaleY(0.88) scaleX(1.12) translateY(1px); }
+            75%    { transform:scaleY(1.12) scaleX(0.9)  translateY(-0.5px); }
+        }
+        .f1{ transform-origin:50% 100%; animation:flicker 0.75s ease-in-out infinite; }
+        .f2{ transform-origin:50% 100%; animation:flicker 0.6s  0.1s ease-in-out infinite; }
+        .f3{ transform-origin:50% 100%; animation:flicker 0.85s 0.2s ease-in-out infinite; }
+        .f4{ transform-origin:50% 100%; animation:flicker 0.65s 0.15s ease-in-out infinite; }
+        .f5{ transform-origin:50% 100%; animation:flicker 0.8s  0.05s ease-in-out infinite; }
+        .f6{ transform-origin:50% 100%; animation:flicker 0.7s  0.25s ease-in-out infinite; }
+        .f7{ transform-origin:50% 100%; animation:flicker 0.9s  0.12s ease-in-out infinite; }
+        .f8{ transform-origin:50% 100%; animation:flicker 0.78s 0.08s ease-in-out infinite; }
+        @keyframes glowPulse { 0%,100%{opacity:0.35;} 50%{opacity:0.65;} }
+        .cg{ animation:glowPulse 1s ease-in-out infinite; }
+
+        /* blow-out */
+        .blown .candle-flame { display:none !important; }
+        .smoke-puff {
+            position:absolute;
+            animation:smokeDrift 1.2s ease-out forwards;
+            pointer-events:none; font-size:14px; opacity:0.7;
+        }
+        @keyframes smokeDrift { 0%{transform:translateY(0);opacity:0.7;} 100%{transform:translateY(-28px);opacity:0;} }
+
+        @keyframes bounceIn    { 0%{transform:scale(0.7);opacity:0;} 60%{transform:scale(1.04);} 100%{transform:scale(1);opacity:1;} }
+        @keyframes fadeSlideDown { from{opacity:0;transform:translateY(-20px);} to{opacity:1;transform:translateY(0);} }
+        @keyframes fadeUp      { from{opacity:0;transform:translateY(24px);} to{opacity:1;transform:none;} }
+        @keyframes cakeRise    { 0%{opacity:0;transform:translateY(50px) scale(0.85);} 100%{opacity:1;transform:translateY(0) scale(1);} }
+        @keyframes pulse       { 0%,100%{transform:scale(1);} 50%{transform:scale(1.04);} }
+        @keyframes floatHeart  { 0%{transform:translateY(100vh) scale(0.5);opacity:0;} 10%{opacity:0.3;} 90%{opacity:0.1;} 100%{transform:translateY(-10vh) scale(1.2);opacity:0;} }
+        @keyframes confettiBurst { 0%{opacity:1;transform:translate(0,0) rotate(0deg) scale(1);} 100%{opacity:0;transform:var(--tx) rotate(var(--rot)) scale(0.3);} }
+
+        @media (max-width:500px) {
+            .bday-text { font-size:26px; }
+            .tabs { gap:7px; }
+            .tab  { padding:10px 14px; font-size:13px; }
+            .content-area { padding:20px 16px; }
+            .gallery { grid-template-columns:repeat(2,1fr); }
+        }
     </style>
 </head>
 <body>
-    <!-- Password Modal -->
-    <div class="password-modal" id="passwordModal">
-        <div class="password-content">
-            <h2>Enter the secret code</h2>
-            <input type="password" class="password-input" id="passwordInput" placeholder="Our special word...">
-            <button class="submit-btn" id="submitPassword">Enter</button>
-        </div>
+
+<!-- Password Modal -->
+<div class="password-modal" id="passwordModal">
+    <div class="password-content">
+        <h2>🔒 Secret code</h2>
+        <p>Only you know this one</p>
+        <input type="password" class="password-input" id="passwordInput" placeholder="Enter our special word…">
+        <button class="submit-btn" id="submitPassword">Open ✨</button>
+        <div class="error-msg" id="errorMsg"></div>
     </div>
-    
-    <!-- Welcome Screen -->
-    <div class="welcome-screen" id="welcomeScreen">
-        <h1 class="welcome-message">Welcome Your Highness, enjoy your stay</h1>
-    </div>
-    
-    <!-- Main Content -->
-    <div class="container" id="mainContent" style="display: none;">
-        <div class="tabs">
-            <button class="tab active" data-tab="love-letter">
-                <span>❤️</span>  Letter
-            </button>
-            <button class="tab" data-tab="music">
-                <span>🎵</span> Music
-            </button>
-            <button class="tab" data-tab="notes">
-                <span>📝</span> Notes
-            </button>
-            <button class="tab" data-tab="gallery">
-                <span>🌷</span> Gallery
-            </button>
+</div>
+
+<!-- Welcome Screen -->
+<div class="welcome-screen" id="welcomeScreen" style="display:none;">
+    <div class="welcome-message">Welcome, Your Highness 👑</div>
+    <div class="welcome-sub">enjoy your stay</div>
+</div>
+
+<!-- Cake Screen -->
+<div class="cake-screen" id="cakeScreen" style="display:none;">
+    <div class="bday-text">Happy Birthday Tanya 🎂</div>
+
+    <div style="position:relative;">
+        <!-- Clickable cake -->
+        <div class="cake-wrap" id="cakeWrap" title="Tap the candles!">
+            <svg id="cakeSvg" width="320" height="420" viewBox="0 0 320 420" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <!-- Plate -->
+                    <radialGradient id="plateG" cx="50%" cy="40%" r="50%">
+                        <stop offset="0%"   stop-color="#4a3020"/>
+                        <stop offset="100%" stop-color="#2a1a0e"/>
+                    </radialGradient>
+                    <!-- Dark chocolate cake body -->
+                    <linearGradient id="cakeBody" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%"   stop-color="#1a0e08"/>
+                        <stop offset="30%"  stop-color="#3d1f10"/>
+                        <stop offset="70%"  stop-color="#2e1509"/>
+                        <stop offset="100%" stop-color="#150a04"/>
+                    </linearGradient>
+                    <!-- Top face of cake -->
+                    <radialGradient id="cakeTop" cx="50%" cy="50%" r="55%">
+                        <stop offset="0%"   stop-color="#4a2810"/>
+                        <stop offset="100%" stop-color="#2a1206"/>
+                    </radialGradient>
+                    <!-- Chocolate ganache drip -->
+                    <linearGradient id="ganacheG" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%"   stop-color="#1a0e08"/>
+                        <stop offset="100%" stop-color="#0d0704"/>
+                    </linearGradient>
+                    <!-- Sprinkle band -->
+                    <linearGradient id="sprinkleBand" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%"   stop-color="#2e1810"/>
+                        <stop offset="100%" stop-color="#1a0e08"/>
+                    </linearGradient>
+                    <!-- Truffle sphere -->
+                    <radialGradient id="truffleG" cx="35%" cy="30%" r="60%">
+                        <stop offset="0%"   stop-color="#5a3218"/>
+                        <stop offset="60%"  stop-color="#2d1608"/>
+                        <stop offset="100%" stop-color="#120904"/>
+                    </radialGradient>
+                    <radialGradient id="truffleShine" cx="30%" cy="25%" r="40%">
+                        <stop offset="0%"   stop-color="rgba(255,200,120,0.35)"/>
+                        <stop offset="100%" stop-color="rgba(255,200,120,0)"/>
+                    </radialGradient>
+                    <!-- Candle gradients -->
+                    <linearGradient id="cnd1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#c0a060"/><stop offset="100%" stop-color="#e8c880"/></linearGradient>
+                    <linearGradient id="cnd2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#c0a060"/><stop offset="100%" stop-color="#e8c880"/></linearGradient>
+                    <linearGradient id="cnd3" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#c0a060"/><stop offset="100%" stop-color="#e8c880"/></linearGradient>
+                    <linearGradient id="cnd4" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#c0a060"/><stop offset="100%" stop-color="#e8c880"/></linearGradient>
+                    <linearGradient id="cnd5" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#c0a060"/><stop offset="100%" stop-color="#e8c880"/></linearGradient>
+                    <linearGradient id="cnd6" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#c0a060"/><stop offset="100%" stop-color="#e8c880"/></linearGradient>
+                    <linearGradient id="cnd7" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#c0a060"/><stop offset="100%" stop-color="#e8c880"/></linearGradient>
+                    <linearGradient id="cnd8" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#c0a060"/><stop offset="100%" stop-color="#e8c880"/></linearGradient>
+                    <!-- Flame -->
+                    <radialGradient id="flameOuter" cx="50%" cy="75%" r="55%">
+                        <stop offset="0%"   stop-color="#fffde7"/>
+                        <stop offset="35%"  stop-color="#ffb300"/>
+                        <stop offset="75%"  stop-color="#ff6d00"/>
+                        <stop offset="100%" stop-color="rgba(255,109,0,0)"/>
+                    </radialGradient>
+                    <radialGradient id="flameInner" cx="50%" cy="80%" r="45%">
+                        <stop offset="0%"   stop-color="white"/>
+                        <stop offset="60%"  stop-color="#fff9c4"/>
+                        <stop offset="100%" stop-color="rgba(255,249,196,0)"/>
+                    </radialGradient>
+                    <radialGradient id="haloG" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%"   stop-color="rgba(255,180,50,0.55)"/>
+                        <stop offset="100%" stop-color="rgba(255,180,50,0)"/>
+                    </radialGradient>
+                    <!-- Ambient warm glow on cake top from candles -->
+                    <radialGradient id="candleAmbient" cx="50%" cy="50%" r="55%">
+                        <stop offset="0%"   stop-color="rgba(255,160,60,0.18)"/>
+                        <stop offset="100%" stop-color="rgba(255,160,60,0)"/>
+                    </radialGradient>
+                    <!-- Shadow under plate -->
+                    <radialGradient id="shadowG" cx="50%" cy="40%" r="50%">
+                        <stop offset="0%"   stop-color="rgba(0,0,0,0.55)"/>
+                        <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
+                    </radialGradient>
+                </defs>
+
+                <!-- ── FLOOR SHADOW ── -->
+                <ellipse cx="160" cy="408" rx="130" ry="12" fill="url(#shadowG)"/>
+
+                <!-- ── PLATE ── -->
+                <ellipse cx="160" cy="400" rx="148" ry="16" fill="#1a0e08" opacity="0.6"/>
+                <ellipse cx="160" cy="396" rx="144" ry="13" fill="url(#plateG)" stroke="#3a2010" stroke-width="1.5"/>
+                <ellipse cx="160" cy="392" rx="136" ry="9"  fill="#2a1608" opacity="0.5"/>
+                <!-- plate highlight -->
+                <ellipse cx="130" cy="390" rx="40" ry="4" fill="rgba(255,200,120,0.08)"/>
+
+                <!-- ── CAKE BODY (tall single tier, dark choc) ── -->
+                <!-- side face -->
+                <path d="M50,230 Q50,390 50,390 L270,390 Q270,390 270,230 Z" fill="url(#cakeBody)"/>
+                <!-- actual rect -->
+                <rect x="50" y="230" width="220" height="160" fill="url(#cakeBody)"/>
+                <!-- subtle side texture lines (horizontal bands of frosting) -->
+                <rect x="50" y="370" width="220" height="20" rx="0" fill="#120906" opacity="0.4"/>
+
+                <!-- ── SPRINKLE BAND at base ── -->
+                <rect x="50" y="365" width="220" height="22" fill="url(#sprinkleBand)"/>
+                <!-- sprinkles: small white/silver dots and rods -->
+                <g opacity="0.85">
+                    <!-- dots -->
+                    <circle cx="60"  cy="374" r="2.2" fill="white"/>
+                    <circle cx="72"  cy="371" r="1.8" fill="#c0c0c0"/>
+                    <circle cx="85"  cy="376" r="2.5" fill="white"/>
+                    <circle cx="96"  cy="370" r="1.6" fill="#a0a0a0"/>
+                    <circle cx="110" cy="375" r="2"   fill="white"/>
+                    <circle cx="122" cy="372" r="2.4" fill="#d0d0d0"/>
+                    <circle cx="134" cy="376" r="1.8" fill="white"/>
+                    <circle cx="145" cy="370" r="2.2" fill="#b0b0b0"/>
+                    <circle cx="158" cy="374" r="2.5" fill="white"/>
+                    <circle cx="170" cy="371" r="1.7" fill="#c8c8c8"/>
+                    <circle cx="182" cy="376" r="2"   fill="white"/>
+                    <circle cx="194" cy="372" r="2.3" fill="#d8d8d8"/>
+                    <circle cx="205" cy="375" r="1.9" fill="white"/>
+                    <circle cx="218" cy="370" r="2.1" fill="#a8a8a8"/>
+                    <circle cx="230" cy="375" r="2.4" fill="white"/>
+                    <circle cx="243" cy="372" r="1.8" fill="#c0c0c0"/>
+                    <circle cx="255" cy="376" r="2"   fill="white"/>
+                    <circle cx="265" cy="371" r="1.6" fill="#b8b8b8"/>
+                    <!-- tiny rods -->
+                    <rect x="66"  y="372" width="5" height="1.5" rx="1" fill="white"   transform="rotate(30 66 372)"/>
+                    <rect x="102" y="373" width="5" height="1.5" rx="1" fill="#c8c8c8" transform="rotate(-20 102 373)"/>
+                    <rect x="140" y="371" width="5" height="1.5" rx="1" fill="white"   transform="rotate(50 140 371)"/>
+                    <rect x="176" y="374" width="5" height="1.5" rx="1" fill="#d0d0d0" transform="rotate(-35 176 374)"/>
+                    <rect x="212" y="372" width="5" height="1.5" rx="1" fill="white"   transform="rotate(15 212 372)"/>
+                    <rect x="250" y="371" width="5" height="1.5" rx="1" fill="#c0c0c0" transform="rotate(-50 250 371)"/>
+                </g>
+
+                <!-- ── GANACHE DRIPS (dark chocolate flowing down) ── -->
+                <!-- Each drip: a rounded rect + ellipse cap at bottom -->
+                <!-- drip 1 -->
+                <rect x="63" y="228" width="18" height="62" rx="9" fill="url(#ganacheG)"/>
+                <ellipse cx="72" cy="290" rx="9" ry="7" fill="#0d0704"/>
+                <!-- drip 2 -->
+                <rect x="88" y="228" width="14" height="48" rx="7" fill="url(#ganacheG)"/>
+                <ellipse cx="95" cy="276" rx="7" ry="5.5" fill="#0d0704"/>
+                <!-- drip 3 -->
+                <rect x="112" y="228" width="16" height="70" rx="8" fill="url(#ganacheG)"/>
+                <ellipse cx="120" cy="298" rx="8" ry="6" fill="#0d0704"/>
+                <!-- drip 4 -->
+                <rect x="140" y="228" width="12" height="42" rx="6" fill="url(#ganacheG)"/>
+                <ellipse cx="146" cy="270" rx="6" ry="5" fill="#0d0704"/>
+                <!-- drip 5 -->
+                <rect x="160" y="228" width="15" height="58" rx="7.5" fill="url(#ganacheG)"/>
+                <ellipse cx="167" cy="286" rx="7.5" ry="6" fill="#0d0704"/>
+                <!-- drip 6 -->
+                <rect x="185" y="228" width="13" height="35" rx="6.5" fill="url(#ganacheG)"/>
+                <ellipse cx="191" cy="263" rx="6.5" ry="5" fill="#0d0704"/>
+                <!-- drip 7 -->
+                <rect x="206" y="228" width="16" height="52" rx="8" fill="url(#ganacheG)"/>
+                <ellipse cx="214" cy="280" rx="8" ry="6" fill="#0d0704"/>
+                <!-- drip 8 -->
+                <rect x="230" y="228" width="14" height="44" rx="7" fill="url(#ganacheG)"/>
+                <ellipse cx="237" cy="272" rx="7" ry="5.5" fill="#0d0704"/>
+                <!-- drip 9 -->
+                <rect x="252" y="228" width="12" height="30" rx="6" fill="url(#ganacheG)"/>
+                <ellipse cx="258" cy="258" rx="6" ry="5" fill="#0d0704"/>
+
+                <!-- ── CAKE TOP (ganache pool) ── -->
+                <ellipse cx="160" cy="232" rx="110" ry="18" fill="#1a0e08"/>
+                <ellipse cx="160" cy="230" rx="108" ry="16" fill="url(#cakeTop)"/>
+                <!-- top sheen -->
+                <ellipse cx="130" cy="225" rx="55" ry="7" fill="rgba(255,200,100,0.06)"/>
+                <!-- ambient candle glow on top -->
+                <ellipse cx="160" cy="220" rx="90" ry="22" fill="url(#candleAmbient)"/>
+
+                <!-- ── CHOCOLATE TRUFFLES (Ferrero-like) ── -->
+                <!-- Truffle 1 — left cluster -->
+                <circle cx="90"  cy="212" r="18" fill="url(#truffleG)"/>
+                <circle cx="90"  cy="212" r="18" fill="url(#truffleShine)"/>
+                <circle cx="82"  cy="205" r="5"  fill="rgba(255,200,120,0.12)"/>
+                <!-- little nut bumps -->
+                <circle cx="86"  cy="220" r="3.5" fill="#1e0d06" opacity="0.6"/>
+                <circle cx="96"  cy="217" r="3"   fill="#1e0d06" opacity="0.5"/>
+                <circle cx="92"  cy="208" r="3.5" fill="#1e0d06" opacity="0.6"/>
+                <circle cx="82"  cy="213" r="3"   fill="#1e0d06" opacity="0.5"/>
+
+                <!-- Truffle 2 — center-left -->
+                <circle cx="130" cy="207" r="20" fill="url(#truffleG)"/>
+                <circle cx="130" cy="207" r="20" fill="url(#truffleShine)"/>
+                <circle cx="121" cy="199" r="6"  fill="rgba(255,200,120,0.12)"/>
+                <circle cx="126" cy="215" r="4"   fill="#1e0d06" opacity="0.6"/>
+                <circle cx="137" cy="212" r="3.5" fill="#1e0d06" opacity="0.5"/>
+                <circle cx="133" cy="202" r="4"   fill="#1e0d06" opacity="0.6"/>
+                <circle cx="122" cy="208" r="3.5" fill="#1e0d06" opacity="0.5"/>
+
+                <!-- Truffle 3 — center (tallest, slightly risen) -->
+                <circle cx="160" cy="202" r="22" fill="url(#truffleG)"/>
+                <circle cx="160" cy="202" r="22" fill="url(#truffleShine)"/>
+                <circle cx="150" cy="193" r="7"  fill="rgba(255,200,120,0.13)"/>
+                <circle cx="156" cy="212" r="4.5" fill="#1e0d06" opacity="0.6"/>
+                <circle cx="167" cy="208" r="4"   fill="#1e0d06" opacity="0.5"/>
+                <circle cx="163" cy="198" r="4.5" fill="#1e0d06" opacity="0.6"/>
+                <circle cx="152" cy="205" r="4"   fill="#1e0d06" opacity="0.5"/>
+
+                <!-- Truffle 4 — center-right -->
+                <circle cx="192" cy="207" r="20" fill="url(#truffleG)"/>
+                <circle cx="192" cy="207" r="20" fill="url(#truffleShine)"/>
+                <circle cx="183" cy="199" r="6"  fill="rgba(255,200,120,0.12)"/>
+                <circle cx="188" cy="215" r="4"   fill="#1e0d06" opacity="0.6"/>
+                <circle cx="199" cy="212" r="3.5" fill="#1e0d06" opacity="0.5"/>
+                <circle cx="195" cy="202" r="4"   fill="#1e0d06" opacity="0.6"/>
+                <circle cx="184" cy="208" r="3.5" fill="#1e0d06" opacity="0.5"/>
+
+                <!-- Truffle 5 — right -->
+                <circle cx="232" cy="212" r="18" fill="url(#truffleG)"/>
+                <circle cx="232" cy="212" r="18" fill="url(#truffleShine)"/>
+                <circle cx="224" cy="205" r="5"  fill="rgba(255,200,120,0.12)"/>
+                <circle cx="228" cy="220" r="3.5" fill="#1e0d06" opacity="0.6"/>
+                <circle cx="238" cy="217" r="3"   fill="#1e0d06" opacity="0.5"/>
+                <circle cx="234" cy="208" r="3.5" fill="#1e0d06" opacity="0.6"/>
+                <circle cx="224" cy="213" r="3"   fill="#1e0d06" opacity="0.5"/>
+
+                <!-- small truffles between big ones -->
+                <circle cx="112" cy="220" r="12" fill="url(#truffleG)"/>
+                <circle cx="112" cy="220" r="12" fill="url(#truffleShine)"/>
+                <circle cx="210" cy="220" r="12" fill="url(#truffleG)"/>
+                <circle cx="210" cy="220" r="12" fill="url(#truffleShine)"/>
+
+                <!-- ── CANDLES (8 candles, clustered like photo) ── -->
+                <!-- Candle positions spread across top, thin gold/ivory candles -->
+                <!-- C1 -->
+                <g class="candle-group" id="c1">
+                    <rect x="87" y="150" width="7" height="65" rx="3" fill="url(#cnd1)"/>
+                    <line x1="90.5" y1="150" x2="90.5" y2="144" stroke="#888" stroke-width="1.2" stroke-linecap="round"/>
+                    <ellipse class="cg" cx="90.5" cy="137" rx="14" ry="12" fill="url(#haloG)"/>
+                    <g class="f1 candle-flame">
+                        <ellipse cx="90.5" cy="135" rx="5.5" ry="9"   fill="url(#flameOuter)"/>
+                        <ellipse cx="90.5" cy="138" rx="2.5" ry="4.5" fill="url(#flameInner)"/>
+                    </g>
+                </g>
+                <!-- C2 -->
+                <g class="candle-group" id="c2">
+                    <rect x="101" y="143" width="7" height="72" rx="3" fill="url(#cnd2)"/>
+                    <line x1="104.5" y1="143" x2="104.5" y2="137" stroke="#888" stroke-width="1.2" stroke-linecap="round"/>
+                    <ellipse class="cg" cx="104.5" cy="130" rx="14" ry="12" fill="url(#haloG)"/>
+                    <g class="f2 candle-flame">
+                        <ellipse cx="104.5" cy="128" rx="5.5" ry="9"   fill="url(#flameOuter)"/>
+                        <ellipse cx="104.5" cy="131" rx="2.5" ry="4.5" fill="url(#flameInner)"/>
+                    </g>
+                </g>
+                <!-- C3 -->
+                <g class="candle-group" id="c3">
+                    <rect x="118" y="136" width="7" height="79" rx="3" fill="url(#cnd3)"/>
+                    <line x1="121.5" y1="136" x2="121.5" y2="130" stroke="#888" stroke-width="1.2" stroke-linecap="round"/>
+                    <ellipse class="cg" cx="121.5" cy="123" rx="14" ry="12" fill="url(#haloG)"/>
+                    <g class="f3 candle-flame">
+                        <ellipse cx="121.5" cy="121" rx="5.5" ry="9"   fill="url(#flameOuter)"/>
+                        <ellipse cx="121.5" cy="124" rx="2.5" ry="4.5" fill="url(#flameInner)"/>
+                    </g>
+                </g>
+                <!-- C4 center-left -->
+                <g class="candle-group" id="c4">
+                    <rect x="140" y="130" width="7" height="85" rx="3" fill="url(#cnd4)"/>
+                    <line x1="143.5" y1="130" x2="143.5" y2="124" stroke="#888" stroke-width="1.2" stroke-linecap="round"/>
+                    <ellipse class="cg" cx="143.5" cy="117" rx="15" ry="13" fill="url(#haloG)"/>
+                    <g class="f4 candle-flame">
+                        <ellipse cx="143.5" cy="114" rx="6" ry="10"   fill="url(#flameOuter)"/>
+                        <ellipse cx="143.5" cy="118" rx="3"   ry="5"  fill="url(#flameInner)"/>
+                    </g>
+                </g>
+                <!-- C5 tallest center -->
+                <g class="candle-group" id="c5">
+                    <rect x="156" y="122" width="8" height="93" rx="3.5" fill="url(#cnd5)"/>
+                    <line x1="160" y1="122" x2="160" y2="115" stroke="#888" stroke-width="1.4" stroke-linecap="round"/>
+                    <ellipse class="cg" cx="160" cy="108" rx="17" ry="14" fill="url(#haloG)"/>
+                    <g class="f5 candle-flame">
+                        <ellipse cx="160" cy="105" rx="6.5" ry="11"  fill="url(#flameOuter)"/>
+                        <ellipse cx="160" cy="109" rx="3.2" ry="5.5" fill="url(#flameInner)"/>
+                    </g>
+                </g>
+                <!-- C6 center-right -->
+                <g class="candle-group" id="c6">
+                    <rect x="173" y="130" width="7" height="85" rx="3" fill="url(#cnd6)"/>
+                    <line x1="176.5" y1="130" x2="176.5" y2="124" stroke="#888" stroke-width="1.2" stroke-linecap="round"/>
+                    <ellipse class="cg" cx="176.5" cy="117" rx="15" ry="13" fill="url(#haloG)"/>
+                    <g class="f6 candle-flame">
+                        <ellipse cx="176.5" cy="114" rx="6" ry="10"  fill="url(#flameOuter)"/>
+                        <ellipse cx="176.5" cy="118" rx="3"  ry="5"  fill="url(#flameInner)"/>
+                    </g>
+                </g>
+                <!-- C7 -->
+                <g class="candle-group" id="c7">
+                    <rect x="195" y="136" width="7" height="79" rx="3" fill="url(#cnd7)"/>
+                    <line x1="198.5" y1="136" x2="198.5" y2="130" stroke="#888" stroke-width="1.2" stroke-linecap="round"/>
+                    <ellipse class="cg" cx="198.5" cy="123" rx="14" ry="12" fill="url(#haloG)"/>
+                    <g class="f7 candle-flame">
+                        <ellipse cx="198.5" cy="121" rx="5.5" ry="9"   fill="url(#flameOuter)"/>
+                        <ellipse cx="198.5" cy="124" rx="2.5" ry="4.5" fill="url(#flameInner)"/>
+                    </g>
+                </g>
+                <!-- C8 -->
+                <g class="candle-group" id="c8">
+                    <rect x="212" y="143" width="7" height="72" rx="3" fill="url(#cnd8)"/>
+                    <line x1="215.5" y1="143" x2="215.5" y2="137" stroke="#888" stroke-width="1.2" stroke-linecap="round"/>
+                    <ellipse class="cg" cx="215.5" cy="130" rx="14" ry="12" fill="url(#haloG)"/>
+                    <g class="f8 candle-flame">
+                        <ellipse cx="215.5" cy="128" rx="5.5" ry="9"   fill="url(#flameOuter)"/>
+                        <ellipse cx="215.5" cy="131" rx="2.5" ry="4.5" fill="url(#flameInner)"/>
+                    </g>
+                </g>
+
+                <!-- invisible large click zone over candle area -->
+                <rect id="candleClickZone" x="70" y="95" width="200" height="130" fill="transparent" style="cursor:pointer;"/>
+
+            </svg>
         </div>
-        
-        <div class="content-area">
-            <!--  Letter Tab -->
-            <div class="tab-content active" id="love-letter">
-                <h2>My Dear Friend</h2>
-                <div class="letter" id="loveLetter">
-                    <div class="letter-header">
-                        <h3>A Letter For You</h3>
-                        <span>👇 Click to open</span>
-                    </div>
-                    <div class="letter-content">
-                        <p> dear friend,</p>
-<p>Today isn't just your day,it's the day my favorite soul was born</p>
-<p>happy birthday da. I miss you more than words can explain.Sorry i didn't see your text, so you didn't think to check?? 
-I didn't cross your mind at all,am I really that bad..? u know,i never get tried of waiting,actually 13 years indha oobrige 
-wait madthaerbekadhre nanu,ennu ee hours together yella yavdhu but i can't take ignorance pa u may not know,but one day u upload
-story but at same time all my texts r remaine unseen that day i realised u are not busy u just pretending like that way.actually
+
+        <!-- tap label -->
+        <div class="tap-label" id="tapLabel">Tap the candles to reveal</div>
+    </div>
+</div>
+
+<!-- Main Tabs Content -->
+<div class="main-content" id="mainContent">
+    <div class="tabs">
+        <button class="tab active" data-tab="love-letter">❤️ Letter</button>
+        <button class="tab" data-tab="music">🎵 Music</button>
+        <button class="tab" data-tab="notes">📝 Notes</button>
+        <button class="tab" data-tab="gallery">🌷 Gallery</button>
+    </div>
+    <div class="content-area">
+
+        <div class="tab-content active" id="love-letter">
+            <h2>My Dear Friend</h2>
+            <div class="letter" id="loveLetter">
+                <div class="letter-header">
+                    <h3>A Letter For You</h3>
+                    <span class="letter-hint">👇 tap to open</span>
+                </div>
+                <div class="letter-content">
+                    <p>dear friend,</p>
+                    <p>Today isn't just your day, it's the day my favorite soul was born</p>
+                    <p>happy birthday da. I miss you more than words can explain. Sorry i didn't see your text, so you didn't think to check??
+I didn't cross your mind at all, am I really that bad..? u know, i never get tired of waiting, actually 13 years indha oobrige
+wait madthaerbekadhre nanu, ennu ee hours together yella yavdhu but i can't take ignorance pa u may not know, but one day u upload
+story but at same time all my texts r remaine unseen that day i realised u are not busy u just pretending like that way. actually
 u ignored me. after that only i delete all me sent text which are stayed unseen and decided never n ever text to u again from that day.
-you asked me right why i am gifting all these antha ega aa time bandhiedhe but kelo intentions nenge ella and then I finally accepted 
-that our chapter is now closed and i'll only remember u as my favorite almost.ega ansthaedhe that nanu diploma ge join agdhale
+you asked me right why i am gifting all these antha ega aa time bandhiedhe but kelo intentions nenge ella and then I finally accepted
+that our chapter is now closed and i'll only remember u as my favorite almost. ega ansthaedhe that nanu diploma ge join agdhale
 edhiedhre channagirthithu nim jothe friendship madhale edhiedhre channgirthitu but still i wish to see u again and i wish that this wish
-never truly gets fulfilled. sometimes i gathered lot of words and wrote pragraphs but i forgot that reader also must carry a willing heart
-to read. i had tried really hard pa i invited to hangout for lunch,you said i can't,i did call u but again you said don't call 
-me,i texted u often but u gave replay after several hrs/days.but stll u choose to leave me anyway!..then wt else i should  do pa.amele
-ansthu why should u replay to me nah i am your boyfriend,nah iam your best friend not even known person also and now i came to know 
-where i belong .yavthadhru nim diploma life remind madkondre please ignore my existence like how u do know ,i hope i am not even there also .
-if in case estu days alli onesali nu nanna nenapikondilla andhre it's okay mathe ennu yavthu nenpeskolbedi,this bastard friend u never 
-wanted and don't ever try to contact me,i know u even nemge nanhathra mathadokku esta ne ella antha ...! </p>
-<p>last one question pa istu days alli yavthu nan gift madithu sare hakobeku antha ansilva or esta elva..? and i don't wanna answer,
-sumne hage keldhe aste ,u know crying is also need a lavish console that i can't afford</p>
-<p>sometimes na you don't lose people on the way up,you trade them without realizing the cost.</p> 
-<p>now i lost faith in fate.if meeting me was a bad past of your life then i am sorry pa.i don't know wt to say sorry, thanks, goodbyee.. atleast one of us is
-happy now </p>                        
- <p>annoyed person,</p>
-                   <p>Me</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Music Tab -->
-            <div class="tab-content" id="music">
-                <h2>Songs that remind me of you</h2>
-                <div class="song">
-                    <div class="song-icon">🎵</div>
-                    <div class="song-info">
-                        <h4>Parayuvaan</h4>
-                        <p>by Sid sriram</p>
-<audio controls>
-            <source src="song1.mpeg" type="audio/mpeg">
-        </audio>
-                    </div>
-                </div>
-                <div class="song">
-                    <div class="song-icon">🎵</div>
-                    <div class="song-info">
-                        <h4>Kele cheluve</h4>
-                        <p> by Satish patla</p>
-<audio controls>
-            <source src="song2.mpeg" type="audio/mpeg">
-        </audio>
-                    </div>
-                </div>
-<div class="song">
-                    <div class="song-icon">🎵</div>
-                    <div class="song-info">
-                        <h4>Song in my voice</h4>
-                        <p> by Ullas </p>
-<audio controls>
-            <source src="song3.mp4">
-        </audio>
-                    </div>
-                </div>
-
-            </div>
-            
-            <!-- Notes Tab -->
-            <div class="tab-content" id="notes">
-                <h2>Some aphorisms </h2>
-                <div class="note">
-                    <p> I miss who you were not who you are</p>
-                </div>
-                <div class="note">
-                    <p>if i could i hang a star each time you crossed my mind,the cosmos would be jealous of the galaxy i'd design.</p>
-                </div>
-                <div class="note">
-                    <p>once the rain is over an umbrella becomes a burden to everyone. that's how loyalty ends when benefits stop </p>
-                </div>
-                <div class="note">
-                    <p>sometimes people paint you as a villain so they don't feel guilty for how they treated you</p>
-                </div>
-                  <div class="note">
-                    <p>funny how habits stay,but people always find a way to leave.</p>
-                </div>
-                   <div class="note">
-                    <p>heavier than the hospital bed is the chair beside it watching the one you love suffer</p>
-                </div>
-
-            </div>
-            
-            <!-- Gallery Tab -->
-            <div class="tab-content" id="gallery">
-                <h2>Something for you</h2>
-                <div class="gallery">
-                    <div class="gallery-item">
-                        <img src="WhatsApp Image 2026-02-06 at 21.16.14.jpeg">
-                    </div>
-                   <div class="gallery-item">
-                        <img src="WhatsApp Image 2026-02-06 at 21.16.21.jpeg">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="WhatsApp Image 2026-02-06 at 21.16.22 (1).jpeg">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="WhatsApp Image 2026-02-06 at 21.16.25 (1).JPG">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="WhatsApp Image 2026-02-06 at 21.16.25 (2).JPG">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="WhatsApp Image 2026-02-06 at 21.16.22 (2).jpeg">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="WhatsApp Image 2026-02-06 at 21.16.22.jpeg">
-                    </div>
-                        <div class="gallery-item">
-                        <img src="WhatsApp Image 2026-02-06 at 21.16.23 (1).jpeg">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="WhatsApp Image 2026-02-06 at 21.16.23.jpeg">
-                    </div>
-                         <div class="gallery-item">
-                        <img src="WhatsApp Image 2026-04-02 at 00.20.16.jpeg">
-                    </div>
-                         <div class="gallery-item">
-                        <img src="WhatsApp Image 2026-04-02 at 00.20.17.jpeg">
-                    </div>
-                       <div class="gallery-item">
-                        <img src="WhatsApp Image 2026-04-02 at 00.20.18.jpeg">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="de2c5f0d-5d11-476c-ab24-51d0814f10aa.png">
-                    </div>
+never truly gets fulfilled. sometimes i gathered lot of words and wrote paragraphs but i forgot that reader also must carry a willing heart
+to read. i had tried really hard pa i invited to hangout for lunch, you said i can't, i did call u but again you said don't call
+me, i texted u often but u gave reply after several hrs/days. but still u choose to leave me anyway!.. then what else i should do pa. amele
+ansthu why should u reply to me nah i am your boyfriend, nah i am your best friend not even known person also and now i came to know
+where i belong. yavthadhru nim diploma life remind madkondre please ignore my existence like how u do now, i hope i am not even there also.
+if in case estu days alli onesali nu nanna nenapikondilla andhre it's okay mathe ennu yavthu nenpeskolbedi, this bastard friend u never
+wanted and don't ever try to contact me, i know u even nemge nanhathra mathadokku esta ne ella antha...!</p>
+                    <p>last one question pa istu days alli yavthu nan gift madithu sare hakobeku antha ansilva or esta elva..? and i don't wanna answer,
+sumne hage keldhe aste, u know crying is also need a lavish console that i can't afford</p>
+                    <p>sometimes na you don't lose people on the way up, you trade them without realizing the cost.</p>
+                    <p>now i lost faith in fate. if meeting me was a bad past of your life then i am sorry pa. i don't know what to say sorry, thanks, goodbye.. atleast one of us is happy now</p>
+                    <p>annoyed person,</p>
+                    <p>Me</p>
                 </div>
             </div>
         </div>
-    </div>
-    
-    <!-- Decorative elements -->
-    <div class="heart" style="top: 10%; left: 5%;">❤️</div>
-    <div class="heart" style="top: 20%; right: 10%;">❤️</div>
-    <div class="heart" style="bottom: 15%; left: 15%;">❤️</div>
-    <div class="teddy-bear" style="top: 30%; left: 10%;">🧸</div>
-    <div class="teddy-bear" style="bottom: 10%; right: 5%;">🧸</div>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
 
-    // Password check
-    const passwordModal = document.getElementById('passwordModal');
-    const welcomeScreen = document.getElementById('welcomeScreen');
-    const mainContent = document.getElementById('mainContent');
-    const passwordInput = document.getElementById('passwordInput');
+        <div class="tab-content" id="music">
+            <h2>Songs that remind me of you</h2>
+            <div class="song">
+                <div class="song-icon">🎵</div>
+                <div class="song-info">
+                    <h4>Parayuvaan</h4>
+                    <p>by Sid Sriram</p>
+                    <audio controls style="width:100%;max-width:280px;"><source src="song1.mpeg" type="audio/mpeg"></audio>
+                </div>
+            </div>
+            <div class="song">
+                <div class="song-icon">🎵</div>
+                <div class="song-info">
+                    <h4>Kele cheluve</h4>
+                    <p>by Satish Patla</p>
+                    <audio controls style="width:100%;max-width:280px;"><source src="song2.mpeg" type="audio/mpeg"></audio>
+                </div>
+            </div>
+            <div class="song">
+                <div class="song-icon">🎵</div>
+                <div class="song-info">
+                    <h4>Song in my voice</h4>
+                    <p>by Ullas</p>
+                    <audio controls style="width:100%;max-width:280px;"><source src="song3.mp4"></audio>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="notes">
+            <h2>Some aphorisms</h2>
+            <div class="note">I miss who you were not who you are</div>
+            <div class="note">if i could hang a star each time you crossed my mind, the cosmos would be jealous of the galaxy i'd design.</div>
+            <div class="note">sometimes people paint you as a villain so they don't feel guilty for how they treated you</div>
+            <div class="note">funny how habits stay, but people always find a way to leave.</div>
+            <div class="note">heavier than the hospital bed is the chair beside it watching the one you love suffer</div>
+        </div>
+
+        <div class="tab-content" id="gallery">
+            <h2>Something for you</h2>
+            <div class="gallery">
+                <div class="gallery-item"><img src="WhatsApp Image 2026-02-06 at 21.16.14.jpeg" alt="memory"></div>
+                <div class="gallery-item"><img src="WhatsApp Image 2026-02-06 at 21.16.21.jpeg" alt="memory"></div>
+                <div class="gallery-item"><img src="WhatsApp Image 2026-02-06 at 21.16.22 (1).jpeg" alt="memory"></div>
+                <div class="gallery-item"><img src="WhatsApp Image 2026-02-06 at 21.16.25 (1).JPG" alt="memory"></div>
+                <div class="gallery-item"><img src="WhatsApp Image 2026-02-06 at 21.16.25 (2).JPG" alt="memory"></div>
+                <div class="gallery-item"><img src="WhatsApp Image 2026-02-06 at 21.16.22 (2).jpeg" alt="memory"></div>
+                <div class="gallery-item"><img src="WhatsApp Image 2026-02-06 at 21.16.22.jpeg" alt="memory"></div>
+                <div class="gallery-item"><img src="WhatsApp Image 2026-02-06 at 21.16.23 (1).jpeg" alt="memory"></div>
+                <div class="gallery-item"><img src="WhatsApp Image 2026-02-06 at 21.16.23.jpeg" alt="memory"></div>
+                <div class="gallery-item"><img src="WhatsApp Image 2026-04-02 at 00.20.16.jpeg" alt="memory"></div>
+                <div class="gallery-item"><img src="WhatsApp Image 2026-04-02 at 00.20.17.jpeg" alt="memory"></div>
+                <div class="gallery-item"><img src="WhatsApp Image 2026-04-02 at 00.20.18.jpeg" alt="memory"></div>
+                <div class="gallery-item"><img src="de2c5f0d-5d11-476c-ab24-51d0814f10aa.png" alt="memory"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Fullscreen Image Viewer -->
+<div id="imageViewer" class="image-viewer">
+    <span id="closeViewer">&times;</span>
+    <img id="viewerImg" alt="fullscreen">
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const passwordModal  = document.getElementById('passwordModal');
+    const welcomeScreen  = document.getElementById('welcomeScreen');
+    const cakeScreen     = document.getElementById('cakeScreen');
+    const mainContent    = document.getElementById('mainContent');
+    const passwordInput  = document.getElementById('passwordInput');
     const submitPassword = document.getElementById('submitPassword');
-    
-    submitPassword.addEventListener('click', function() {
+    const errorMsg       = document.getElementById('errorMsg');
+    const tapLabel       = document.getElementById('tapLabel');
+    const cakeSvg        = document.getElementById('cakeSvg');
+    const candleZone     = document.getElementById('candleClickZone');
+
+    // ── floating hearts ──
+    function spawnFloatingHearts() {
+        const emojis = ['❤️','💕','💖','💗','🌸'];
+        for (let i = 0; i < 20; i++) {
+            const el = document.createElement('div');
+            el.className = 'floating-heart';
+            el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            el.style.left = Math.random() * 100 + 'vw';
+            el.style.animationDuration = (6 + Math.random() * 9) + 's';
+            el.style.animationDelay    = (Math.random() * 10) + 's';
+            el.style.fontSize = (13 + Math.random() * 12) + 'px';
+            document.body.appendChild(el);
+        }
+    }
+
+    // ── confetti burst ──
+    function confettiBurst(x, y) {
+        const colors = ['#ff6b9d','#ffcc00','#7c4dff','#00bcd4','#ff9800','#4caf50','#f48fb1','#80deea','#fff9c4'];
+        for (let i = 0; i < 55; i++) {
+            const piece = document.createElement('div');
+            piece.className = 'confetti-piece';
+            const angle = (i / 55) * 360;
+            const dist  = 80 + Math.random() * 160;
+            const tx = `translateX(${Math.cos(angle * Math.PI / 180) * dist}px) translateY(${Math.sin(angle * Math.PI / 180) * dist}px)`;
+            piece.style.cssText = `left:${x}px;top:${y}px;width:${5+Math.random()*8}px;height:${5+Math.random()*8}px;background:${colors[i % colors.length]};--tx:${tx};--rot:${Math.random() * 720}deg;animation-duration:${0.9+Math.random()*0.6}s;`;
+            document.body.appendChild(piece);
+            setTimeout(() => piece.remove(), 1800);
+        }
+    }
+
+    // ── blow out candles + smoke ──
+    function blowCandles() {
+        const flames = document.querySelectorAll('.candle-flame');
+        const halos  = document.querySelectorAll('.cg');
+        flames.forEach(f => { f.style.display = 'none'; });
+        halos.forEach(h  => { h.style.opacity = '0'; });
+
+        // add smoke puffs at each candle tip
+        const candlePositions = [
+            {x:91,y:135}, {x:105,y:128}, {x:122,y:121}, {x:144,y:114},
+            {x:160,y:105}, {x:177,y:114}, {x:199,y:121}, {x:216,y:128}
+        ];
+        const svgRect = cakeSvg.getBoundingClientRect();
+        const scaleX  = svgRect.width  / 320;
+        const scaleY  = svgRect.height / 420;
+
+        candlePositions.forEach(pos => {
+            const puff = document.createElement('div');
+            puff.className = 'smoke-puff';
+            puff.textContent = '💨';
+            puff.style.left = (svgRect.left + pos.x * scaleX) + 'px';
+            puff.style.top  = (svgRect.top  + pos.y * scaleY) + 'px';
+            document.body.appendChild(puff);
+            setTimeout(() => puff.remove(), 1300);
+        });
+    }
+
+    // ── unlock ──
+    function unlock() {
         if (passwordInput.value.toLowerCase() === 'ghost') {
+            errorMsg.textContent = '';
             passwordModal.style.opacity = '0';
             setTimeout(() => {
                 passwordModal.style.display = 'none';
                 welcomeScreen.style.display = 'flex';
-                
+                welcomeScreen.style.opacity = '1';
+                spawnFloatingHearts();
                 setTimeout(() => {
                     welcomeScreen.style.opacity = '0';
                     setTimeout(() => {
                         welcomeScreen.style.display = 'none';
-                        mainContent.style.display = 'block';
+                        cakeScreen.style.display    = 'flex';
                     }, 800);
-                }, 2500);
+                }, 2600);
             }, 500);
+        } else {
+            errorMsg.textContent = "Hmm, that's not it 💔";
+            passwordInput.value = '';
+            passwordInput.focus();
         }
-    });
+    }
 
-    passwordInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            submitPassword.click();
-        }
-    });
+    submitPassword.addEventListener('click', unlock);
+    passwordInput.addEventListener('keypress', e => { if (e.key === 'Enter') unlock(); });
 
-    // Tabs
-    const tabs = document.querySelectorAll('.tab');
-    const tabContents = document.querySelectorAll('.tab-content');
+    // ── CANDLE CLICK → reveal ──
+    let candleClicked = false;
+    function onCandleClick(e) {
+        if (candleClicked) return;
+        candleClicked = true;
 
-    tabs.forEach(tab => {
-        tab.addEventListener('click', function() {
-            const targetTab = this.getAttribute('data-tab');
-            tabs.forEach(t => t.classList.remove('active'));
+        const cx = e.clientX || window.innerWidth  / 2;
+        const cy = e.clientY || window.innerHeight / 2;
+
+        // burst from click point
+        confettiBurst(cx, cy);
+        // also burst from center of screen for drama
+        setTimeout(() => confettiBurst(window.innerWidth / 2, window.innerHeight / 3), 200);
+
+        // blow out candles
+        blowCandles();
+
+        // hide tap label
+        tapLabel.style.transition = 'opacity 0.4s';
+        tapLabel.style.opacity    = '0';
+
+        // after short delay, slide cake away and show content
+        setTimeout(() => {
+            cakeScreen.style.transition = 'opacity 0.6s';
+            cakeScreen.style.opacity    = '0';
+            setTimeout(() => {
+                cakeScreen.style.display = 'none';
+                mainContent.style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 600);
+        }, 900);
+    }
+
+    // Make the whole cake + the invisible click zone both trigger it
+    candleZone.addEventListener('click', onCandleClick);
+    // also clicking anywhere on the svg triggers it (for mobile tap anywhere on cake)
+    cakeSvg.addEventListener('click', onCandleClick);
+
+    // ── TABS ──
+    document.querySelectorAll('.tab').forEach(tab => {
+        tab.addEventListener('click', function () {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
             this.classList.add('active');
-
-            tabContents.forEach(content => {
-                content.classList.remove('active');
-                if (content.id === targetTab) {
-                    content.classList.add('active');
-                }
+            const target = this.getAttribute('data-tab');
+            document.querySelectorAll('.tab-content').forEach(c => {
+                c.classList.remove('active');
+                if (c.id === target) c.classList.add('active');
             });
         });
     });
 
-    // Letter
-    const loveLetter = document.getElementById('loveLetter');
-    loveLetter.addEventListener('click', function() {
+    // ── LETTER EXPAND ──
+    document.getElementById('loveLetter').addEventListener('click', function () {
         this.classList.toggle('expanded');
     });
 
-    // Floating elements
-    function addFloatingElements() {
-        for (let i = 0; i < 15; i++) {
-            const heart = document.createElement('div');
-            heart.classList.add('heart');
-            heart.innerHTML = '❤️';
-            heart.style.left = Math.random() * 100 + '%';
-            heart.style.top = Math.random() * 100 + '%';
-            document.body.appendChild(heart);
-        }
-    }
-    addFloatingElements();
-
-    // ✅ FULLSCREEN IMAGE FEATURE (FIXED POSITION)
-    const galleryImages = document.querySelectorAll('.gallery-item img');
-    const viewer = document.getElementById('imageViewer');
-    const viewerImg = document.getElementById('viewerImg');
+    // ── GALLERY VIEWER ──
+    const viewer      = document.getElementById('imageViewer');
+    const viewerImg   = document.getElementById('viewerImg');
     const closeViewer = document.getElementById('closeViewer');
-
-    galleryImages.forEach(img => {
-        img.addEventListener('click', () => {
-            viewer.style.display = 'flex';
-            viewerImg.src = img.src;
-        });
+    document.querySelectorAll('.gallery-item img').forEach(img => {
+        img.addEventListener('click', () => { viewer.style.display = 'flex'; viewerImg.src = img.src; });
     });
-
-    closeViewer.addEventListener('click', () => {
-        viewer.style.display = 'none';
-    });
-
-    viewer.addEventListener('click', (e) => {
-        if (e.target !== viewerImg) {
-            viewer.style.display = 'none';
-        }
-    });
-
+    closeViewer.addEventListener('click',  () => { viewer.style.display = 'none'; });
+    viewer.addEventListener('click', e => { if (e.target !== viewerImg) viewer.style.display = 'none'; });
 });
-</script>  
-<!-- Fullscreen Image Viewer -->
-<div id="imageViewer" class="image-viewer">
-    <span id="closeViewer">&times;</span>
-    <img id="viewerImg">
-</div>
+</script>
 </body>
 </html>
