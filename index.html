@@ -171,15 +171,33 @@
         }
         .letter-content p { margin-bottom:12px; }
         .letter.expanded .letter-content { max-height:9999px; }
-
-        .song {
-            background:rgba(255,255,255,0.04); border:1px solid rgba(255,100,160,0.14);
-            padding:16px; border-radius:14px; margin-bottom:14px;
-            display:flex; align-items:flex-start; gap:14px;
-        }
-        .song-icon { font-size:26px; margin-top:2px; }
-        .song-info h4 { font-size:17px; margin-bottom:4px; color:#ffb3d1; }
-        .song-info p  { color:rgba(255,180,210,0.45); font-size:13px; margin-bottom:10px; }
+.song {
+    background: #fce4ec;
+    border: none;
+    padding: 18px 20px;
+    border-radius: 18px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 2px 10px rgba(216,27,96,0.08);
+}
+.song-icon { font-size: 28px; flex-shrink: 0; color: #9c6fc0; }
+.song-info { flex: 1; min-width: 0; }
+.song-info h4 { font-size: 17px; margin-bottom: 3px; color: #c2185b; font-weight: 700; }
+.song-info p  { color: #a0667a; font-size: 13px; margin-bottom: 10px; }
+.song-info audio {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 50px;
+    background: #f8f8f8;
+    height: 44px;
+}
+/* Style audio controls on webkit */
+.song-info audio::-webkit-media-controls-panel {
+    background: #f1f1f1;
+    border-radius: 50px;
+}
 
         .note {
             background:rgba(255,255,255,0.04); padding:15px 18px;
@@ -636,33 +654,33 @@ sumne hage keldhe aste, u know crying is also need a lavish console that i can't
             </div>
         </div>
 
-        <div class="tab-content" id="music">
-            <h2>Songs that remind me of you</h2>
-            <div class="song">
-                <div class="song-icon">🎵</div>
-                <div class="song-info">
-                    <h4>Parayuvaan</h4>
-                    <p>by Sid Sriram</p>
-                    <audio controls style="width:100%;max-width:280px;"><source src="song1.mpeg" type="audio/mpeg"></audio>
-                </div>
-            </div>
-            <div class="song">
-                <div class="song-icon">🎵</div>
-                <div class="song-info">
-                    <h4>Kele cheluve</h4>
-                    <p>by Satish Patla</p>
-                    <audio controls style="width:100%;max-width:280px;"><source src="song2.mpeg" type="audio/mpeg"></audio>
-                </div>
-            </div>
-            <div class="song">
-                <div class="song-icon">🎵</div>
-                <div class="song-info">
-                    <h4>Song in my voice</h4>
-                    <p>by Ullas</p>
-                    <audio controls style="width:100%;max-width:280px;"><source src="song3.mp4"></audio>
-                </div>
-            </div>
+       <div class="tab-content" id="music">
+    <h2>Songs that remind me of you</h2>
+    <div class="song">
+        <div class="song-icon">🎵</div>
+        <div class="song-info">
+            <h4>Parayuvaan</h4>
+            <p>by Sid Sriram</p>
+            <audio controls style="width:100%;"><source src="song1.mpeg" type="audio/mpeg"></audio>
         </div>
+    </div>
+    <div class="song">
+        <div class="song-icon">🎵</div>
+        <div class="song-info">
+            <h4>Kele cheluve</h4>
+            <p>by Satish Patla</p>
+            <audio controls style="width:100%;"><source src="song2.mpeg" type="audio/mpeg"></audio>
+        </div>
+    </div>
+    <div class="song">
+        <div class="song-icon">🎵</div>
+        <div class="song-info">
+            <h4>Song in my voice</h4>
+            <p>by Ullas</p>
+            <audio controls style="width:100%;"><source src="song3.mp4"></audio>
+        </div>
+    </div>
+</div>
 
         <div class="tab-content" id="notes">
             <h2>Some aphorisms</h2>
