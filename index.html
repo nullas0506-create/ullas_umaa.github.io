@@ -612,20 +612,21 @@
 <!-- Main Tabs Content -->
 <div class="main-content" id="mainContent">
     <div class="tabs">
-        <button class="tab active" data-tab="letter">❤️ Letter</button>
+        <button class="tab active" data-tab="love-letter">❤️ Letter</button>
         <button class="tab" data-tab="music">🎵 Music</button>
         <button class="tab" data-tab="notes">📝 Notes</button>
         <button class="tab" data-tab="gallery">🌷 Gallery</button>
     </div>
     <div class="content-area">
 
-        <div class="tab-content active" id="letter">
+         <div class="tab-content active" id="love-letter">
             <h2>My Dear Friend</h2>
-            <div class="letter" id="letter">
+            <div class="letter" id="loveLetter">
                 <div class="letter-header">
                     <h3>A Letter For You</h3>
                     <span class="letter-hint">👇 tap to open</span>
                 </div>
+
                 <div class="letter-content">
                     <p>dear friend,</p>
                     <p>Today isn't just your day , it's the day my favorite soul was born</p>
@@ -652,7 +653,6 @@ sumne hage keldhe aste , u know crying is also need a lavish console that i can'
                     <p>annoyed person,</p>
                     <p>Me</p>
                 </div>
-            </div>
             </div>
         </div>
 
@@ -870,7 +870,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // ── LETTER EXPAND ──
-    document.getElementById('Letter').addEventListener('click', function () {
+    document.getElementById('loveLetter').addEventListener('click', function () {
         this.classList.toggle('expanded');
     });
 
